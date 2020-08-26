@@ -27,5 +27,8 @@ switch ($uc) {
     case 'attribChambres':
         include './controleurs/c_AttributionChambres.php';
         break;
+    case 'gestGroupes':
+        include './controleurs/c_GestionGroupes.php';
+        break;
 }
 require 'vues/v_fin.inc.php';
