@@ -530,4 +530,17 @@ class PdoFestival
         $res = $requetePrepare->fetch(PDO::FETCH_OBJ);
         return ($res) ? $res->nombreChambres : 0;
     }
+    
+    public function ajouterNouveauGroupe($idGroupe, $nomGroupe, $email, $nbPersonneGroupe, $paysGroupe, $hebergementGroupe) {
+        $requetePrepare = PdoFestival::$monPdo->prepare(
+                'INSERT INTO groupe (id, nom, email, nombrePersonnes, nomPays, hebergement)'
+                . 'VALUES (:unId, :unNom, :unEmail, :unNombrePersonnes, :unNomPays, :unHebergement)'
+        );
+        $requetePrepare->bindParam(':unId', $idGroupe, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unNom', $nomGroupe, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unEmail', $email, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unNombrePersonnes', $nbPersonneGroupe, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unNomPays', $paysGroupe, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unHebergement', $hebergementGroupe, PDO::PARAM_STR);
+    }
 }
